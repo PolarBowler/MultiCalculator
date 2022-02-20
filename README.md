@@ -1,18 +1,28 @@
-## Getting Started
+# MultiCalculator
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This is my simple mulifunction-calculator i wrote while learning Java. I'm sure it's not the most elegant it could be, but it's a start. I made two separate classes, one that holds methods for getting various user inputs and one that holds methods for doing various calculations based on input.
 
-## Folder Structure
+It features input valdiation where it makes sense.
 
-The workspace contains two folders by default, where:
+I'm not a native english speaker so the terms used for the various parts of the calculations might not make too much sense.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Features
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- [x] Requesting input from the User:
+   - [x] Byte
+   - [x] Short
+   - [x] Integer
+   - [x] Long
+   - [x] Float
+   - [x] Double
+   - [x] Boolean
+   - [x] String
+- [x] Calculation Methods:
+  - [x] Addition
+  - [x] Subtraction
+  - [x] Multiplication
+  - [x] Division
+  - [x] Exponentiation
+  - [ ] nth root
+  - [ ] Logarithm
+  - [ ] non-Arithmetic Calculations
