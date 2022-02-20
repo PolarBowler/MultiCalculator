@@ -3,30 +3,81 @@ import mymethods.UserInput;
 
 public class MultiCalculator {
     public static void main(String[] args) throws Exception {
-        UserInput test = new UserInput();
+        Calculations calculate = new Calculations();
+        UserInput userInput = new UserInput();
+        Boolean error = false;
 
-        byte byteTest = test.getByte("Input a number between -128 and 127 without decimal points: ");
-        System.out.println("You entered: " + byteTest);
+        String[] calcModes = { "1 - Addition", "2 - Subtraction", "3 - Multiplication", "4 - Division",
+                "5 - Exponentiation" };
+        System.out.println("What kind of calculation do you want to do?");
+        for (String i : calcModes)
+            System.out.println(i);
+        int modeSelect = 0;
+        do {
+            modeSelect = userInput.getInt("Enter the number of the calculation mode you wish to use: ");
 
-        short shortTest = test.getShort("Input a number between -32,768 and 32,767 without decimal points: ");
-        System.out.println("You entered: " + shortTest);
+            switch (modeSelect) {
+                case 1:
+                    System.out.println("Let's add two numbers together!");
 
-        int intTest = test.getInt("Input a number between -2,147,483,648 and 2,147,483,647 without decimal points: ");
-        System.out.println("You entered: " + intTest);
+                    double term1 = userInput.getDouble("Enter the first number: ");
+                    double term2 = userInput.getDouble("Enter the second number: ");
 
-        long longTest = test.getLong("Input a number between -9,223,372,036,854,775,808 and 9,223,372,036,854,775,807 without decimal points: ");
-        System.out.println("You entered: " + longTest);
+                    double sum = calculate.addNums(term1, term2);
+                    System.out.println("(" + term1 + ")+(" + term2 + ")=(" + sum + ")");
+                    break;
+                case 2:
+                    System.out.println("Let's subtracte a number from a different number!");
 
-        float floatTest = test.getFloat("Input a number with up to 6 decimal points: ");
-        System.out.println("You entered: " + floatTest);
+                    double minuend = userInput.getDouble("Enter the number you want to subtract from: ");
+                    double subtrahend = userInput.getDouble("Enter the number you want to subtract: ");
 
-        double doubleTest = test.getDouble("Input a number with up to 15 decimal points: ");
-        System.out.println("You entered: " + doubleTest);
+                    double difference = calculate.subtractNums(minuend, subtrahend);
+                    System.out.println("(" + minuend + ")-(" + subtrahend + ")=(" + difference + ")");
+                    break;
+                case 3:
+                    System.out.println("Let's multiply two numbers!");
 
-        String stringTest = test.getString("Input a string: ");
-        System.out.println("You entered: " + stringTest);
+                    double factor1 = userInput.getDouble("Enter the first factor: ");
+                    double factor2 = userInput.getDouble("Enter the second factor: ");
 
-        String stringTest2 = test.getString("Input a string(do not leave empty): ", false);
-        System.out.println("You entered: " + stringTest2);
+                    double product = calculate.multiplyNums(factor1, factor2);
+                    System.out.println("(" + factor1 + ")*(" + factor2 + ")=(" + product + ")");
+                    break;
+                case 4:
+                    System.out.println("Let's divide a number with a different number!");
+
+                    double dividend = userInput.getDouble("Enter the number you want to divide: ");
+                    double divisor = 0.0d;
+
+                    do {
+                        divisor = userInput.getDouble("Enter the number to divide with: ");
+                        if (divisor != 0) {
+                            error = false;
+                        } else {
+                            System.out.println("Don't divide by 0! Try again!");
+                            error = true;
+                        }
+                    } while (error);
+
+                    double quotient = calculate.divideNums(dividend, divisor);
+                    System.out.println("(" + dividend + ")/(" + divisor + ")=(" + quotient + ")");
+
+                    break;
+                case 5:
+                    System.out.println("Let's raise a number to the power of an exponent!");
+
+                    double base = userInput.getDouble("Enter the base: ");
+                    int exponent = userInput.getInt("Enter the exponent: ");
+
+                    double power = calculate.intExpoNums(base, exponent);
+                    System.out.println("(" + base + ")^(" + exponent + ")=(" + power + ")");
+                    break;
+                default:
+                    System.out.println("Sorry there are only 5 modes implemented so far! Please try again!");
+                    modeSelect = 0;
+                    break;
+            }
+        } while (modeSelect == 0);
     }
 }
