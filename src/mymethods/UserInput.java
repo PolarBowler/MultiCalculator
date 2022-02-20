@@ -3,12 +3,25 @@ package mymethods;
 import java.util.Scanner;
 import java.text.*;
 
+/*
+ * This class is intended to provide input methods to get various variables from the user.
+ */
 public class UserInput {
     private Scanner sc = new Scanner(System.in);
+
+    /*
+     * The following makes sure that when parsing to float or double the locale is
+     * respected, see the methods "getFloat" and "getDouble" for examples.
+     */
+    private NumberFormat currentFormat = NumberFormat.getInstance();
+
     private Boolean error = false;
+    /*
+     * The following is the message that is used when an exception is thrown while
+     * parsing data types!.
+     */
     private String invalidInput = "Invalid input, please try again!";
     private String tempString = "";
-    private NumberFormat currentFormat = NumberFormat.getInstance();
 
     public byte getByte(String prompt) {
         byte result = 0;
@@ -86,6 +99,15 @@ public class UserInput {
             error = false;
             try {
                 result = currentFormat.parse(tempString).floatValue();
+                /*
+                 * parseFloat would not work here. It ignores the systems locale. This means
+                 * that for example: on my system the locale is en_at, which means decimal
+                 * points are marked by a "," instead of a "."! By using
+                 * NumberFormat.getFormat(); we check the systems locale and using
+                 * "currentFormat.parse(tempString).floatValue();" we convert the string (which
+                 * is written in the style of the locale) into a decimal number and
+                 * ".floatValue()" makes sure it gets assigned as a float to "result".
+                 */
             } catch (Exception e) {
                 System.out.println(invalidInput);
                 error = true;
@@ -102,7 +124,7 @@ public class UserInput {
             tempString = getString(prompt);
             error = false;
             try {
-                result = currentFormat.parse(tempString).doubleValue();
+                result = currentFormat.parse(tempString).doubleValue(); // See method "getFloat" above for more Infos
             } catch (Exception e) {
                 System.out.println(invalidInput);
                 error = true;
@@ -138,6 +160,10 @@ public class UserInput {
     }
 
     public String getString(String prompt, Boolean allowEmpty) {
+        /*
+         * this method is an Overload of the normal getString method which allows us to
+         * specify that empty strings should not be returned.
+         */
         String result = "";
 
         do {

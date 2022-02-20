@@ -7,12 +7,22 @@ public class MultiCalculator {
         UserInput userInput = new UserInput();
         Boolean error = false;
 
+        /*
+         * Additional calculation modes need to be added to this array as well as on the
+         * do - while loop a bit further down.
+         */
         String[] calcModes = { "1 - Addition", "2 - Subtraction", "3 - Multiplication", "4 - Division",
                 "5 - Exponentiation" };
         System.out.println("What kind of calculation do you want to do?");
         for (String i : calcModes)
             System.out.println(i);
         int modeSelect = 0;
+
+        /*
+         * The following loop runs while modeSelect is on the default 0.
+         * Every additional calculation mode needs to be added to as an additional case!
+         * The case needs to use the same number as added in the String array calcModes!
+         */
         do {
             modeSelect = userInput.getInt("Enter the number of the calculation mode you wish to use: ");
 
@@ -74,7 +84,8 @@ public class MultiCalculator {
                     System.out.println("(" + base + ")^(" + exponent + ")=(" + power + ")");
                     break;
                 default:
-                    System.out.println("Sorry there are only 5 modes implemented so far! Please try again!");
+                    System.out.println("Sorry there are only " + calcModes.length
+                            + " modes implemented so far! Please try again!");
                     modeSelect = 0;
                     break;
             }

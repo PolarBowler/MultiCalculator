@@ -1,5 +1,7 @@
 package mymethods;
-
+/*
+ *this class is intended to supply calculation methods to the main program
+ */
 public class Calculations {
     public double addNums(double term1, double term2) {
         double sum = term1 + term2;
