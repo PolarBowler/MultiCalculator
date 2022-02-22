@@ -4,8 +4,6 @@ This is my simple mulifunction-calculator i wrote while learning Java. I'm sure 
 
 It features input valdiation where it makes sense.
 
-I'm not a native english speaker so the terms used for the various parts of the calculations might not make too much sense.
-
 ## Features
 
 - [x] Requesting input from the User:
