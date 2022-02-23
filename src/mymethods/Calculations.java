@@ -1,24 +1,25 @@
 package mymethods;
+
 /*
  *this class is intended to supply calculation methods to the main program
  */
 public class Calculations {
     public double addNums(double term1, double term2) {
-        double sum = term1 + term2;
-        return sum;
+        return term1 + term2;
     }
+
     public double subtractNums(double minuend, double subtrahend) {
-        double difference = minuend - subtrahend;
-        return difference;
+        return minuend - subtrahend;
     }
+
     public double multiplyNums(double factor1, double factor2) {
-        double product = factor1 * factor2;
-        return product;
+        return factor1 * factor2;
     }
+
     public double divideNums(double dividend, double divisor) {
-        double quotient = dividend / divisor;
-        return quotient;
+        return dividend / divisor;
     }
+
     public double intExpoNums(double base, int exponent) {
         double power = base;
         for (int i = 1; i < exponent; i++) power *= base;
