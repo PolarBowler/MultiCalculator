@@ -16,12 +16,8 @@ public class UserInput {
     private NumberFormat currentFormat = NumberFormat.getInstance();
 
     private Boolean error = false;
-    /*
-     * The following is the message that is used when an exception is thrown while
-     * parsing data types!.
-     */
-    private String invalidInput = "Invalid input, please try again!";
     private String tempString = "";
+    private String invalidInput = "Invalid input, please try again!";
 
     public byte getByte(String prompt) {
         byte result = 0;
